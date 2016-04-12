@@ -1,0 +1,18 @@
+#!/bin/bash
+
+cd "${BASH_SOURCE%/*}"
+
+echo Cleaning..
+[ -d "bin" ] && rm -r bin
+[ -f "gogun" ] && rm gogun
+
+mkdir bin
+
+echo Compiling...
+cd bin
+g++ -g -I../headers -std=c++1y -Wall -c ../src/* 
+cd ..
+
+echo Linking and building executable..
+g++ -g -I./headers -std=c++1y -Wall -lsfml-system -lsfml-graphics -lsfml-window ./bin/* -o water
+
