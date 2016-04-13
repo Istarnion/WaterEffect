@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd "${BASH_SOURCE%/*}"
+
+echo Cleaning..
+[ -d ./bin ] && rm -r bin
+
+mkdir bin
+
+echo Compiling..
+javac ./src/** -d ./bin
+
+echo Done..
+
