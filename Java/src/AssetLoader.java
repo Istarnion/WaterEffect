@@ -17,7 +17,12 @@ public class AssetLoader {
     private void loadImage(String name, String file) {
         try {
             BufferedImage img = ImageIO.read(new File(file));
-            images.put(name, img);
+
+            BufferedImage imgARGB = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g = imgARGB.createGraphics();
+            g.drawImage(img, 0, 0, null);
+
+            images.put(name, imgARGB);
         }
         catch(IOException e) {
             System.err.println("Failed to load image "+file);

@@ -3,9 +3,7 @@
 cd "${BASH_SOURCE%/*}"
 
 echo Cleaning..
-[ -d ./bin ] && rm -r bin
-
-mkdir bin
+[ -d ./bin ] && rm bin/*.class
 
 echo Compiling..
 javac ./src/** -d ./bin
